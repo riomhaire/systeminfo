@@ -1,0 +1,10 @@
+[Unit]
+Description=SystemInfo Service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/systeminfo -port 3333  
+ExecStop=/usr/bin/killall systeminfo
+
+[Install]
+WantedBy=default.target

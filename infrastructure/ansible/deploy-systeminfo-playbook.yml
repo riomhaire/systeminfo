@@ -1,0 +1,24 @@
+---
+- hosts: intel
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+
+  tasks:
+    # Kill/Stop any existing systeminfo process
+    - name: Stop Existing SystemInfo
+      command: /usr/bin/killall systeminfo
+      no_log: True
+      ignore_errors: yes      
+
+    # Copy systeminfo application
+    - name: Copy across systeminfo application
+      copy: src=systeminfo dest=/usr/bin/systeminfo owner=root group=root mode=0755
+
+    # Copy across service definition file
+    - name: Copy across systeminfo service
+      copy: src=systeminfo.service dest=/etc/systemd/system owner=root group=root mode=0777
+
+    # Start and enable the systeminfo service 
+    - name: Start and enable the systeminfo service
+      service: name=systeminfo enabled=yes state=restarted

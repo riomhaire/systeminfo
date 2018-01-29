@@ -1,0 +1,21 @@
+---
+- hosts: cluster
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+
+  tasks:
+    # Stop and disable the systeminfo service 
+    - name: Stop and disable the systeminfo service
+      service: name=systeminfo enabled=no state=stopped
+
+    # Remove service definition file
+    - name: Remove systeminfo service
+      file: path=/etc/systemd/system/systeminfo.service state=absent
+
+    # Remove lightauth application
+    - name: Remove systeminfo application
+      file: path=/usr/bin/systeminfo state=absent
+
+
+
