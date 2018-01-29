@@ -1,0 +1,2 @@
+# systeminfo
+Simple metrics enpoint
