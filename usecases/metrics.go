@@ -3,9 +3,11 @@ package usecases
 import (
 	"github.com/riomhaire/systeminfo/entities"
 	"github.com/shirou/gopsutil/cpu"
+	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/host"
 	"github.com/shirou/gopsutil/load"
 	"github.com/shirou/gopsutil/mem"
+	"github.com/shirou/gopsutil/net"
 )
 
 func Metrics() entities.SystemInformation {
@@ -31,6 +33,24 @@ func Metrics() entities.SystemInformation {
 	if cperr == nil {
 		info.CPU.CPULoad = cpuLoad[0]
 	}
+
+	// OK look up physical storage/partition info
+	disks, derr := disk.Partitions(false)
+	if derr == nil {
+		// OK we have something - make space
+		info.Storage = make([]disk.UsageStat, len(disks))
+		// Range through the partitions and retrieve the data
+		for idx, partition := range disks {
+			diskInfo, err := disk.Usage(partition.Mountpoint)
+			if err == nil {
+				info.Storage[idx] = *diskInfo
+			}
+
+		}
+	}
+
+	// OK lookup network stats
+	info.Network, _ = net.IOCounters(false)
 
 	return info
 }
