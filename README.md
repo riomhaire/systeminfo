@@ -306,7 +306,7 @@ We are not going to get into how to set up prometheus and grafana since there ar
 
 One simple example of a grafina dashboard is:
 
-![Example Grafina dashboard](https://github.com/riomhaire/systeminfo/docs/images/grafina.png)
+![Example Grafina dashboard](https://github.com/riomhaire/systeminfo/blob/master/docs/images/grafana.png)
 
 Hope this project is of some interest and use.
 
