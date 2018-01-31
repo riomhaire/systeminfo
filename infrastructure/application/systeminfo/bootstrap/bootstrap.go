@@ -9,7 +9,7 @@ import (
 	"github.com/urfave/negroni"
 )
 
-const VERSION = "SystemInfo Version 1.1"
+const VERSION = "SystemInfo Version 1.2"
 
 type Application struct {
 	Port    int
