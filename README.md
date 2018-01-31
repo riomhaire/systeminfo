@@ -299,3 +299,14 @@ systeminfo_network_packets_received 21114441
 If type is 'text/plain'.
 
 A very basic but functional service for a machine.
+
+### Usage with Prometheus and Grafana
+
+We are not going to get into how to set up prometheus and grafana since there are many good sites on the wen which will take you through this. The only thing to do is to tell prometheus to access the machine and port (usually port 3333) where systeminfo is running. All the variables exported to prometheus start with 'systeminfo_' and can be gleaned from the above example.
+
+One simple example of a grafina dashboard is:
+
+![Example Grafina dashboard](https://github.com/riomhaire/systeminfo/docs/images/grafina.png)
+
+Hope this project is of some interest and use.
+
