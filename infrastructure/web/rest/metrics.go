@@ -8,6 +8,8 @@ import (
 	"github.com/riomhaire/systeminfo/usecases"
 )
 
+// Metrics - HTTP Handler to export the JSON or Prometheus versions of the collected metrics
+// depending on the request type
 func Metrics(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	requestType := req.Header.Get("Accept")

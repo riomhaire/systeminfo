@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// PrometheusMetrics - exports a prometheus compatible string
 func PrometheusMetrics() string {
 	metrics := Metrics() // Get the raw metrics
 	var buffer bytes.Buffer

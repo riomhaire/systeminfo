@@ -10,6 +10,7 @@ import (
 	"github.com/shirou/gopsutil/net"
 )
 
+// Metrics - export Data structure form of the metrics
 func Metrics() entities.SystemInformation {
 	info := entities.SystemInformation{}
 
